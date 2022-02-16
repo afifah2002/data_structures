@@ -1,0 +1,128 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+void push();
+void pop();
+void isempty();
+void isfull();
+void peep();
+void display();
+int a[6];
+int front=-1;
+int rear=-1;
+int ele;
+int main()
+{  
+    
+    int ch;
+    while(1)
+    {
+    printf(" \n choose your operation \t 1.push \t 2.pop \t 3.display \t 4.isfull? \t 5.isempty \t 6. peep \n");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+        case 1: push();
+        break;
+        case 2: pop();
+        break;
+        case 3: display();
+        break;
+        case 4: isfull();
+        break;
+        case 5: isempty();
+        break;
+        case 6: peep();
+        break;
+        default: printf("\n wrong option ");
+    }
+    }
+    
+    return 0;
+}
+
+void push()
+{   
+    
+     if(rear==5)
+    {
+     printf("\n the queue is full");
+     return;
+    }
+    else if(front==-1 && rear==-1)
+    {  printf("\n enter the element ");
+    scanf("%d",&ele);
+        front=0;
+        rear=0;
+        a[rear]=ele;
+    }
+    else
+    {   
+    printf("\n enter the element ");
+    scanf("%d",&ele);
+    rear++;
+    a[rear]=ele;
+    }
+    
+}
+
+
+void pop()
+{
+    if(front==-1 && rear==-1)
+    {
+        printf("\n queue is empty ");
+        return;
+    }
+    else if(front==rear)
+    {
+        printf("\n the element being deleted is %d ",a[front]);
+        front==-1;
+        rear==-1;
+    }
+    else{
+    printf("\n the element being deleted is %d ",a[front]);
+    front++;
+    }
+}
+void display()
+{
+    if(front==-1 && rear==-1)
+    {
+        printf("\n the queue is empty ");
+        return;
+    }
+    else
+    {
+    for(int i=front;i<=rear;i++)
+    {
+        printf("\n %d",a[i]);
+    }
+    }
+}
+void peep()
+{
+    if(front==-1)
+    {
+        printf("\n queue is empty ");
+        return;
+    }
+    printf("\n %d",a[front]);
+}
+void isempty()
+{
+    if(front==-1)
+    {
+        printf("\n it is empty");
+        return;
+    }
+    printf("\n it is not empty ");
+}
+void isfull()
+{
+    if(rear==5)
+    {
+        printf("\n it is full");
+        return;
+    }
+    printf("\n it is not full ");
+}
