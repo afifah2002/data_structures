@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+# define size 4
+int arr[size];
+void push();
+void pop();
+void display();
+int top=-1;
+int main()
+{    
+    int ch;
+    while(1)
+    {
+    printf("\n choose your operation \n1. push\n2.pop \n3.display ");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+        case 1: push();
+        break;
+        case 2: pop();
+        break;
+        case 3: display();
+        break;
+        default: printf("\n wrong option ");
+    }
+}
+    return 0;
+}
+
+void push()
+{
+    int item;
+    if(top==size-1)
+    {
+        printf("\n stack overflow");
+        return;
+    }
+    printf("\n enter the item u wish to insert ");
+    scanf("%d",&item);
+    top=top+1;
+    arr[top]=item;
+    
+
+}
+
+void pop()
+{    
+    char ans;
+    int del=0;
+    if(top==-1)
+    {
+        printf("\n stack underflow ");
+        return;
+    }
+
+    del=arr[top];
+    top=top-1;
+    printf("\n the deleted item is %d",del);
+    
+  
+}
+void display()
+{
+    if(top==-1)
+    {
+        printf("\n stack underflow");
+        return;
+    }
+    for(int i=top;i>=0;i--)
+    {
+        printf("%d",arr[i]);
+        printf("\n");
+    }
+    
+}
+
+
