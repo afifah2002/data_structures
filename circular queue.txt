@@ -1,0 +1,95 @@
+#define n 5
+int a[n];
+int front=-1;
+int rear=-1;
+void push();
+void pop();
+void display();
+void main()
+{
+int ch;
+char ans;
+clrscr();
+do
+{
+printf("\n enter your option \n 1.push \n 2.pop \n 3. display \n");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1: push();
+break;
+case 2: pop();
+break;
+case 3: display();
+break;
+default: printf("\n wrong option ");
+}
+printf("\n do u wish to continue? y/n? \n" );
+scanf( " %c ",&ans);
+} while(ans=='y');
+getch();
+}
+void push()
+{      int x;
+if(front==-1)
+{
+printf("\n enter the element ");
+scanf("%d",&x);
+front=0;
+rear=0;
+a[rear]=x;
+}
+else if((rear+1) %n==front)
+{
+printf("\n overflow ");
+return;
+}
+else
+{
+rear=(rear+1)%n;
+printf("\n enter the element ");
+scanf("%d",&x);
+a[rear]=x;
+}
+}
+void pop()
+{
+if(front==-1)
+{
+printf("\n underflow");
+return;
+}
+else if(front==rear)
+{
+printf("\n deleted element : %d ",a[front]);
+front=-1;
+rear=-1;
+}
+else
+{
+printf("\n delted element : %d ",a[front]);
+front=(front+1)%n;
+}
+}
+void display()
+{
+int i;
+i=front;
+if(front ==-1)
+{
+printf("\n underflow ");
+return;
+}
+else
+{
+
+while(i!=rear)
+{
+printf(" %d ",a[i]);
+i=(i+1)%n;
+}
+printf(" %d ",a[rear]);
+}
+}
+
+
